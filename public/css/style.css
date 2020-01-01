@@ -12,10 +12,17 @@ header {
 
 #burgerInput-div {
     margin-top: 100px;
+    padding: 0;
 }
 #burgerInput {
+    margin: 0px;
     width: 300px;
     height: 30px;
     padding: 9px;
     font-size: 15px;
+    
+}
+#inputBurgerBtn {
+    height: 100%;
+    margin: 0;
 }
