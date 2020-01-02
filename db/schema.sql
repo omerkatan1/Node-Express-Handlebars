@@ -8,7 +8,3 @@ CREATE TABLE notDevoured (
     burgerName VARCHAR(100) NOT NULL,
     PRIMARY KEY (id);
 );
-
-CREATE TABLE devoured (
-
-);
