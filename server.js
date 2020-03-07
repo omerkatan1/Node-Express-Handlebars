@@ -22,7 +22,7 @@ var connection = mysql.createConnection({
     host: "localhost",
     port: "3306",
     user: "root",
-    password: "omer171015415",
+    password: "password",
     database: "burger_db"
 });
 
@@ -38,6 +38,16 @@ app.get("/", function(req, res) {
         res.render("index", { notDevoured: data });
     });
 });
+
+app.post("/api/burgers", function(req, res) {
+    connection.query("INSERT INTO notDevoured (burgerName) VALUES = ?", [req.body.burgerName], function(err, result) {
+        if (err) throw err;
+
+        res.json(result.burgerName);
+    })
+})
+
+
 
 
 app.listen(PORT);
