@@ -1,5 +1,0 @@
-$(function() {
-    $('#burgerSubmit').click(function() {
-        
-    });
-});
