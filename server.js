@@ -40,10 +40,10 @@ app.get("/", function(req, res) {
 });
 
 app.post("/api/burgers", function(req, res) {
-    connection.query("INSERT INTO notDevoured (burgerName) VALUES = ?", [req.body.burgerName], function(err, result) {
+    connection.query("INSERT INTO notDevoured (burgerName) VALUES = ?", [req.body.data], function(err, result) {
         if (err) throw err;
 
-        res.json(result.burgerName);
+        res.json(result.data);
     })
 })
 

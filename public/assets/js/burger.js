@@ -3,7 +3,7 @@ $(".create-from").on("submit", function(event) {
 
     console.log('test');
     var newBurger = {
-        name: $("").val().trim()
+        name: $("#burgerInput").val().trim()
     };
 
 
