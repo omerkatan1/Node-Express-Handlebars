@@ -62,7 +62,7 @@ app.post("/submit", ({ body }, res) => {
         if (err) {
             res.status(500).end();
         }
-        // console.log(data);
+        console.log(data);
 
         res.render("index", { burger: data });
     });
