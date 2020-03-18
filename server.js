@@ -11,10 +11,10 @@ const PORT = process.env.PORT || 8080;
 
 app.use(express.static("public"));
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // creates sql connection
@@ -26,26 +26,30 @@ var connection = mysql.createConnection({
     database: "burger_db"
 });
 
-connection.connect(function(err) {
+connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as " + connection.threadId);
 })
 
-app.get("/", function(req, res) {
-    connection.query("SELECT * FROM notDevoured;", function(err, data) {
+app.get("/", function (req, res) {
+    connection.query("SELECT * FROM notDevoured;", function (err, data) {
         if (err) throw err;
 
         res.render("index", { notDevoured: data });
     });
 });
 
-app.post("/api/burgers", function(req, res) {
-    connection.query("INSERT INTO notDevoured (burgerName) VALUES = ?", [req.body.data], function(err, result) {
+
+app.post("/submit", ({ body }, res) => {
+    var burgerName = body.enterBurger;
+    console.log(burgerName);
+
+    connection.query("INSERT INTO notDevoured (burgerName) VALUES = ?", [burgerName], function(err, result) {
         if (err) throw err;
 
         res.json(result.data);
     })
-})
+});
 
 
 
