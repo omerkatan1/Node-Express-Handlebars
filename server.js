@@ -31,16 +31,20 @@ connection.connect(function (err) {
     console.log("connected as " + connection.threadId);
 })
 
+
+// updates notDevoured list on first load
 app.get("/", function (req, res) {
     connection.query("SELECT * FROM burger;", function (err, data) {
         if (err) {
             res.status(500).end();
         }
-        console.log(data);
+        // console.log(data);
 
         res.render("index", { burger: data });
     });
 });
+
+
 
 
 // Inserts into DataBase
@@ -50,8 +54,19 @@ app.post("/submit", ({ body }, res) => {
 
     connection.query('INSERT INTO burger SET ?', { burgerName: burgerNameInput }, function (err) {
         if (err) throw err;
-
     });
+
+
+    // updates notDevoured list when burger input is submitted
+    connection.query("SELECT * FROM burger;", function (err, data) {
+        if (err) {
+            res.status(500).end();
+        }
+        // console.log(data);
+
+        res.render("index", { burger: data });
+    });
+
     console.log('burger added to DB');
 });
 

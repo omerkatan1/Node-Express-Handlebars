@@ -26,3 +26,10 @@ header {
     height: 100%;
     margin: 0;
 }
+
+#notDevouredList {
+    float: left;
+    text-align: left;
+    margin-top: 10vh;
+    margin-left: 20vw;
+}
