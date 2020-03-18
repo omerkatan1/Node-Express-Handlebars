@@ -32,23 +32,24 @@ connection.connect(function (err) {
 })
 
 app.get("/", function (req, res) {
-    connection.query("SELECT * FROM notDevoured;", function (err, data) {
+    connection.query("SELECT * FROM burger;", function (err, data) {
         if (err) throw err;
+        console.log(data);
 
         res.render("index", { notDevoured: data });
     });
 });
 
 
+// Inserts into DataBase
 app.post("/submit", ({ body }, res) => {
-    var burgerName = body.enterBurger;
-    console.log(burgerName);
+    var burgerNameInput = body.enterBurger;
+    console.log(burgerNameInput);
 
-    connection.query("INSERT INTO notDevoured (burgerName) VALUES = ?", [burgerName], function(err, result) {
+    connection.query('INSERT INTO burger SET ?', { burgerName: burgerNameInput }, function (err) {
         if (err) throw err;
-
-        res.json(result.data);
-    })
+        console.log('burger added to DB');
+    });
 });
 
 
