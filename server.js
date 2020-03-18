@@ -33,10 +33,12 @@ connection.connect(function (err) {
 
 app.get("/", function (req, res) {
     connection.query("SELECT * FROM burger;", function (err, data) {
-        if (err) throw err;
+        if (err) {
+            res.status(500).end();
+        }
         console.log(data);
 
-        res.render("index", { notDevoured: data });
+        res.render("index", { burger: data });
     });
 });
 
@@ -48,8 +50,9 @@ app.post("/submit", ({ body }, res) => {
 
     connection.query('INSERT INTO burger SET ?', { burgerName: burgerNameInput }, function (err) {
         if (err) throw err;
-        console.log('burger added to DB');
+
     });
+    console.log('burger added to DB');
 });
 
 

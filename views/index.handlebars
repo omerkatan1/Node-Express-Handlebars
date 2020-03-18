@@ -10,9 +10,16 @@
     <input type="submit" value="Submit">
 </form>
 
-
-<div id="devourDiv"></div>
-
-<div id="resultDiv"></div>
+{{!-- not devoured list --}}
+<ul>
+    {{#each burger}}
+    <li>
+        <p>
+            {{this.burgerName}}
+            <button class="devourBtn"></button>
+        </p>
+    </li>
+    {{/each}}
+</ul>
 
 <script src="assets/js/burger.js" type="text/javascript"></script>
