@@ -23,7 +23,37 @@
 </ul>
 
 <ul id="devouredList">
-    
+
 </ul>
 
-<script src="assets/js/burger.js" type="text/javascript"></script>
+{{!-- <script src="/public/assets/js/burger.js" type="text/javascript"></script> --}}
+
+<script>
+
+    var notDevouredList = document.querySelectorAll("#notDevouredList li").length;
+    console.log(notDevouredList);
+
+    for (var i = 0; i < notDevouredList; i++) {
+        //var devourClick = document.getElementsByClassName('devourBtn')[i].getAttribute('click_data');
+
+        var devourClick = document.getElementsByClassName('devourBtn')[i];
+
+        moveDevour(devourClick);
+
+    }
+
+    function moveDevour(devourClick) {
+
+        devourClick.onclick = function() {
+            var getData = this.getAttribute('click_data');
+            alert(getData);
+        }
+    }
+
+    //var devourClick = document.getElementById('devourBtn');
+    //var attr = devourClick.getAttribute('click_data');
+
+    //devourClick.onclick = function() {
+      //  alert(attr);
+    //}
+</script>
