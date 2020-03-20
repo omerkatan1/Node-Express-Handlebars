@@ -46,8 +46,6 @@ app.get("/", function (req, res) {
 
 
 
-
-
 // Inserts into DataBase
 app.post("/submit", ({ body }, res) => {
     var burgerNameInput = body.enterBurger;
