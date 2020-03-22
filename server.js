@@ -20,8 +20,8 @@ app.set("view engine", "handlebars");
 var connection = mysql.createConnection({
     host: "localhost",
     port: "3306",
-    user: "root",
-    password: "password",
+    user: "	b1e73a7308c8a7",
+    password: "7ae89c70",
     database: "burger_db"
 });
 
