@@ -3,7 +3,7 @@ const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
 
 var app = express();
@@ -77,4 +77,6 @@ app.post("/submit", ({ body }, res) => {
 
 
 
-app.listen(PORT);
+app.listen(PORT, function () {
+    console.log("Listening on port:%s", PORT);
+});
