@@ -39,7 +39,7 @@ connection.connect(function (err) {
 
 // updates notDevoured list on first load
 app.get("/", function (req, res) {
-    connection.query("SELECT * FROM burger;", function (err, data) {
+    connection.query("SELECT * FROM c2otzsk5wz6lu5mu;", function (err, data) {
         if (err) {
             res.status(500).end();
         }
