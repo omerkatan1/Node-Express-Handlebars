@@ -38,7 +38,7 @@ connection.connect(function (err) {
 
 
 // updates notDevoured list on first load
-app.get("https://node-express-handlebars-1.herokuapp.com/", function (req, res) {
+app.get("/", function (req, res) {
     connection.query("SELECT * FROM burger;", function (err, data) {
         if (err) {
             res.status(500).end();
