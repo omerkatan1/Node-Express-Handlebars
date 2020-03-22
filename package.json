@@ -1,12 +1,12 @@
 {
   "name": "Node-Express-Handlebars",
   "version": "1.0.0",
-  "description": "",
+  "description": "## About This web application uses mysql and MVC to generate burgers that could be \"devoured\". Once a burger is \"eaten\" then it will move to a a different module that holds all the burgers that have been devoured.",
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
-    "mysql": "^2.17.1"
+    "mysql": "^2.18.1"
   },
   "devDependencies": {},
   "scripts": {

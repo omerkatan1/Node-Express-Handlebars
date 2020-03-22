@@ -17,13 +17,19 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // creates sql connection
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: "3306",
-    user: "	b1e73a7308c8a7",
-    password: "7ae89c70",
-    database: "burger_db"
-});
+var connection;
+
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL)
+} else {
+    connection = mysql.createConnection({
+        host: "lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        port: "3306",
+        user: "wozm56icmcbpzm6x",
+        password: "advq4xp5cto60520",
+        database: "c2otzsk5wz6lu5mu"
+    });
+}
 
 connection.connect(function (err) {
     if (err) throw err;
