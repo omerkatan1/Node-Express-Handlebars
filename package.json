@@ -12,7 +12,7 @@
     "minimist": ">=1.2.2"
   },
   "scripts": {
-    "start": "npm start"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
