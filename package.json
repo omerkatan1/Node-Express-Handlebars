@@ -9,10 +9,9 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "minimist": ">=1.2.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "npm start"
   },
   "repository": {
     "type": "git",

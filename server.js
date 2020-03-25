@@ -62,7 +62,7 @@ app.post("/submit", ({ body }, res) => {
 
 
     // updates notDevoured list when burger input is submitted
-    connection.query("SELECT * FROM burger;", function (err, data) {
+    connection.query("SELECT * FROM c2otzsk5wz6lu5mu", function (err, data) {
         if (err) {
             res.status(500).end();
         }
