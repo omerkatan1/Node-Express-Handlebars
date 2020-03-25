@@ -8,8 +8,7 @@
     "express-handlebars": "^3.1.0",
     "mysql": "^2.18.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "start": "npm start"
   },
