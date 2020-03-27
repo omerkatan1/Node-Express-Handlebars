@@ -18,26 +18,6 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// var dbURL = "mysql://wozm56icmcbpzm6x:advq4xp5cto60520@lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/c2otzsk5wz6lu5mu";
-
-
-var connection = mysql.createConnection({
-    host: "localhost",
-    port: "3306",
-    user: "root",
-    password: "password",
-    database: "burger_db"
-});
-
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log("connected as " + connection.threadId);
-})
-
-// var connection = mysql.createConnection(dbURL);
-
-// connection.connect();
-
 
 // Inserts into DataBase
 app.post("/submit", ({ body }, res) => {
