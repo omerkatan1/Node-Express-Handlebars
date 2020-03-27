@@ -1,5 +1,4 @@
 const express = require('express');
-// const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 
 
@@ -19,26 +18,28 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// creates sql connection
-var connection;
+var dbURL = "mysql://wozm56icmcbpzm6x:advq4xp5cto60520@lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/c2otzsk5wz6lu5mu";
 
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL)
-} else {
-    connection = mysql.createConnection({
-        host: "lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-        port: "3306",
-        user: "wozm56icmcbpzm6x",
-        password: "advq4xp5cto60520",
-        database: "c2otzsk5wz6lu5mu"
-    });
-}
+// if (process.env.JAWSDB_URL) {
+//     connection = mysql.createConnection(dbURL)
+// } else {
+//     connection = mysql.createConnection({
+//         host: "lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//         port: "3306",
+//         user: "wozm56icmcbpzm6x",
+//         password: "advq4xp5cto60520",
+//         database: "c2otzsk5wz6lu5mu"
+//     });
+// }
 
-connection.connect(function (err) {
-    if (err) throw err;
-    console.log("connected as " + connection.threadId);
-})
+// connection.connect(function (err) {
+//     if (err) throw err;
+//     console.log("connected as " + connection.threadId);
+// })
 
+var connection = mysql.createConnection(dbURL);
+
+connection.connect();
 
 
 // Inserts into DataBase
@@ -52,7 +53,7 @@ app.post("/submit", ({ body }, res) => {
 
 
     // updates notDevoured list when burger input is submitted
-    connection.query("SELECT * FROM c2otzsk5wz6lu5mu", function (err, data) {
+    connection.query("SELECT * FROM burger", function (err, data) {
         if (err) {
             res.status(500).end();
         }
@@ -67,12 +68,12 @@ app.post("/submit", ({ body }, res) => {
 
 // updates notDevoured list on first load
 app.get("/", function (req, res) {
-    connection.query("SELECT * FROM c2otzsk5wz6lu5mu;", function (err, data) {
-        if (err) {
-            res.status(500).end();
-        }
+    connection.query("SELECT * FROM burger;", function (err, data) {
+        // if (err) {
+        //     res.status(500).end();
+        // }
 
-        // if (err) throw err;
+        if (err) throw err;
         // console.log(data);
 
         res.render("index", { burger: data });
