@@ -18,28 +18,25 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var dbURL = "mysql://wozm56icmcbpzm6x:advq4xp5cto60520@lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/c2otzsk5wz6lu5mu";
+// var dbURL = "mysql://wozm56icmcbpzm6x:advq4xp5cto60520@lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/c2otzsk5wz6lu5mu";
 
-// if (process.env.JAWSDB_URL) {
-//     connection = mysql.createConnection(dbURL)
-// } else {
-//     connection = mysql.createConnection({
-//         host: "lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-//         port: "3306",
-//         user: "wozm56icmcbpzm6x",
-//         password: "advq4xp5cto60520",
-//         database: "c2otzsk5wz6lu5mu"
-//     });
-// }
 
-// connection.connect(function (err) {
-//     if (err) throw err;
-//     console.log("connected as " + connection.threadId);
-// })
+var connection = mysql.createConnection({
+    host: "localhost",
+    port: "3306",
+    user: "root",
+    password: "password",
+    database: "burger_db"
+});
 
-var connection = mysql.createConnection(dbURL);
+connection.connect(function (err) {
+    if (err) throw err;
+    console.log("connected as " + connection.threadId);
+})
 
-connection.connect();
+// var connection = mysql.createConnection(dbURL);
+
+// connection.connect();
 
 
 // Inserts into DataBase
@@ -54,13 +51,11 @@ app.post("/submit", ({ body }, res) => {
 
     // updates notDevoured list when burger input is submitted
     connection.query("SELECT * FROM burger", function (err, data) {
-        if (err) {
-            res.status(500).end();
-        }
+        if (err) throw err;
         console.log(data);
 
         res.render("index", { burger: data });
-        res.redirect("/");
+        // res.redirect("/");
     });
 
     console.log('burger added to DB');
